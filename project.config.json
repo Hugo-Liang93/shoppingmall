@@ -1,0 +1,15 @@
+{
+	"description": "this is a project about shoppingmall!",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wxa08542ac96a9a120",
+	"projectname": "shoppingmall",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}
