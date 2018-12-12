@@ -11,5 +11,6 @@
 	"appid": "wxa08542ac96a9a120",
 	"projectname": "shoppingmall",
 	"miniprogramRoot": "dist/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"condition": {}
 }

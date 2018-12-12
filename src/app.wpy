@@ -1,4 +1,5 @@
-<style lang="less">
+<style lang='less'>
+@import (css) "./style/weui.wxss";
 .container {
   height: 100%;
   display: flex;
@@ -6,19 +7,43 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  outline: none;
 }
 </style>
 
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
-
-
+var app =wepy
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+      'pages/usercenter',
+      'pages/shopcar',
+      'pages/products'
     ],
+    tabBar: {
+      list: [
+        {
+          'pagePath': 'pages/index',
+          'text': '首页',
+          'selected': 'true'
+        },
+        {
+          'pagePath': 'pages/products',
+          'text': '商城'
+        },
+        {
+          'pagePath': 'pages/shopcar',
+          'text': '购物车'
+        },
+        {
+          'pagePath': 'pages/usercenter',
+          'text': '个人中心'
+        }
+      ]
+    },
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -37,7 +62,23 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
-    this.testAsync()
+    //云开发初始化
+    // wx.cloud.init({
+    //   env: 'a-project-e811ce'
+    // })
+
+    // wx.cloud.callFunction({
+    //   name: 'add',
+    //   data: {
+    //     a: 10,
+    //     b: 20
+    //   }
+    // }).then(res => {
+    //   console.log('sum is :'+res.result)
+    // })
+    // .catch(console.error)
+
+    //this.testAsync()
   }
 
   sleep (s) {

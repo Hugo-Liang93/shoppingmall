@@ -1,0 +1,69 @@
+<style>
+  .userinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: none;
+    background: none
+  }
+
+  .userinfo-avatar {  
+    overflow:hidden;  
+    display: block;  
+    width: 160rpx;  
+    height: 160rpx;  
+    margin: 20rpx;  
+    margin-top: 50rpx;  
+    border-radius: 50%;  
+    border: 2px solid #fff;  
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+</style>
+
+<template> 
+<view class="weui-cell" style="justify-content: center;">
+    <view class="weui-cell__hd" >
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-avatar"> 获取头像昵称 </button>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" />
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Usercenter extends wepy.page {
+  data= {
+    userInfo: {
+      nickName: '请点击授权'
+    },
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    hasUserInfo: false
+  }
+  methods={
+    getUserInfo: function() {
+      let self = this
+      this.$parent.getUserInfo(function (userInfo) {
+        if (userInfo) {
+          self.userInfo = userInfo
+        }
+        self.hasUserInfo = true
+        self.$apply()
+      })
+    }
+  }
+
+  onLoad() {
+    let self = this
+    self.userInfo = this.$parent.globalData.userInfo
+  }
+}
+</script>
